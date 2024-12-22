@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AddCategory } from "./components/AddCategory";
 import {GifGrid} from "./components/GifGrid";
 const GitExpertApp = () => {
-  const [categories, setCategories] = useState(['one punch']);
+  const [categories, setCategories] = useState(['random']); //estado inicial del componente
 
 
 
@@ -14,7 +14,7 @@ const GitExpertApp = () => {
       return window.alert("La categoria ya existe"); //si el elemento ya existe se muestra un alert
     }
 
-    setCategories([...categories, newCategory]); // agregar un nuevo elemento al arreglo
+    setCategories([newCategory, ...categories, ]); // agregar un nuevo elemento al arreglo
   };
   return (
     <>
