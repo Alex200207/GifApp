@@ -15,3 +15,6 @@
         console.log(gifs);//mostramos los gifs
         return gifs;//retornarmos los gifs
     }
+
+    //un helper es una funcion que nos ayuda a realizar una tarea especifica
+        //en este caso la tarea es obtener los gifs de la api

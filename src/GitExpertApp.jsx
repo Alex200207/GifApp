@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { AddCategory } from "./components/AddCategory";
-import {GifGrid} from "./components/GifGrid";
+import { AddCategory , GifGrid} from "./components";
 const GitExpertApp = () => {
-  const [categories, setCategories] = useState(['random']); //estado inicial del componente
-
-
+  const [categories, setCategories] = useState(["random"]); //estado inicial del componente
 
   const onAddCategory = (newCategory) => {
     //validacion donde revisamos si el valor de input esta en en estado
@@ -14,7 +11,7 @@ const GitExpertApp = () => {
       return window.alert("La categoria ya existe"); //si el elemento ya existe se muestra un alert
     }
 
-    setCategories([newCategory, ...categories, ]); // agregar un nuevo elemento al arreglo
+    setCategories([newCategory, ...categories]); // agregar un nuevo elemento al arreglo
   };
   return (
     <>
@@ -27,8 +24,7 @@ const GitExpertApp = () => {
         onNewCategory={(event) => onAddCategory(event)}
       />
 
-
-{/*iteramos el componente pasamos la key y las categorias ademas esta de forma inplicita*/ }
+      {/*iteramos el componente pasamos la key y las categorias ademas esta de forma inplicita*/}
       {categories.map((c) => (
         // iterar sobre el arreglo
         <GifGrid key={c} category={c} />
