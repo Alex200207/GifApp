@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { GifItem } from "./GifItem";
 import { useFetchGifs } from "../hooks/useFetchGifs";
+import { MdDelete } from "react-icons/md";
 
 export const GifGrid = ({ category, onDeleteCategory }) => {
   const { images, isLoading } = useFetchGifs(category);
@@ -19,20 +20,16 @@ export const GifGrid = ({ category, onDeleteCategory }) => {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <h3>{category}</h3>
-        <button
-          onClick={() => onDeleteCategory(category)}
-          style={{
-            padding: "8px 16px",
-            backgroundColor: "#dc3545",
-            color: "#fff",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-          }}
-        >
-          Eliminar
+        <button onClick={() => onDeleteCategory(category)}>
+          <MdDelete className="btn-delete" />
         </button>
       </div>
       {isLoading && <p>Cargando..</p>}

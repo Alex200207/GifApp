@@ -22,23 +22,23 @@ const GitExpertApp = () => {
 
   return (
     <>
-      <h1>GifExpertApp</h1>
+      <h1>GifApp</h1>
 
       <AddCategory
-        //  setCategories={setCategories}
-        //cuando se utiliza on se esta indicando que es un evento
-        //queremos decir que se esta emitiendo un algo
         onNewCategory={(event) => onAddCategory(event)}
       />
       <hr />
 
-      {/*iteramos el componente pasamos la key y las categorias ademas esta de forma inplicita*/}
       {categories.map((c) => (
-        // iterar sobre el arreglo
         <GifGrid key={c} category={c} onDeleteCategory={deleteCategory} />
       ))}
 
+      <hr />
 
+      <footer>
+        <p>© 2023 GifApp. All rights reserved.</p>
+        <p>Developed by Eddy T.</p>
+      </footer>
     </>
   );
 };
