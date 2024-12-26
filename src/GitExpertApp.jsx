@@ -13,6 +13,13 @@ const GitExpertApp = () => {
 
     setCategories([newCategory, ...categories]); // agregar un nuevo elemento al arreglo
   };
+
+  const deleteCategory = (category) => {
+    setCategories(categories.filter((c) => c !== category));
+  };
+
+
+
   return (
     <>
       <h1>GifExpertApp</h1>
@@ -23,12 +30,15 @@ const GitExpertApp = () => {
         //queremos decir que se esta emitiendo un algo
         onNewCategory={(event) => onAddCategory(event)}
       />
+      <hr />
 
       {/*iteramos el componente pasamos la key y las categorias ademas esta de forma inplicita*/}
       {categories.map((c) => (
         // iterar sobre el arreglo
-        <GifGrid key={c} category={c} />
+        <GifGrid key={c} category={c} onDeleteCategory={deleteCategory} />
       ))}
+
+
     </>
   );
 };

@@ -16,6 +16,7 @@ export const useFetchGifs = ( category ) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); //el segundo argumento es un arreglo de dependencias que se ejecutara cuando la dependencia cambie
 
+
   return {
     images,
     isLoading,
