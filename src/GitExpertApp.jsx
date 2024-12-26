@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AddCategory , GifGrid} from "./components";
 const GitExpertApp = () => {
-  const [categories, setCategories] = useState(["random"]); //estado inicial del componente
+  const [categories, setCategories] = useState(['anime']); //estado inicial del componente
 
   const onAddCategory = (newCategory) => {
     //validacion donde revisamos si el valor de input esta en en estado

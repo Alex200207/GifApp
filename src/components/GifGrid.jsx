@@ -32,7 +32,7 @@ export const GifGrid = ({ category, onDeleteCategory }) => {
           <MdDelete className="btn-delete" />
         </button>
       </div>
-      {isLoading && <p>Cargando..</p>}
+      {isLoading && <p>Cargando..</p> && <div >Sin resultados</div>}
 
       <div className="card-grid">
         {images.map(
