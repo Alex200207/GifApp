@@ -1,4 +1,7 @@
 module.exports = {
     testEnvironment: 'jest-environment-jsdom',
-    setupFiles: ['./jest.setup.js']
+    setupFiles: ['./jest.setup.js'],
+    transformIgnorePatterns: [
+        "node_modules/(?!(your-library-name)/)"
+      ]
 }

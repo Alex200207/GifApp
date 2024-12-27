@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { GifItem } from "../../components/GifItem";
 
 describe("prueba en el componente GiftItem", () => {
@@ -10,7 +10,34 @@ describe("prueba en el componente GiftItem", () => {
 
     expect(container).toMatchSnapshot();
   });
+
+
+  test('debe de mostrar la imagen con el URL y el ALT indicado', () => {
+
+    render(<GifItem title={title} url={url} />);
+    // screen.debug();
+    //debug imprime en consola el arbol del componente
+    // expect( screen.getByRole('img').src).toBe(url);
+    // expect( screen.getByRole('img').alt).toBe(title);
+
+    //forma correcta
+
+    const {src, alt} = screen.getByRole('img');
+    expect(alt).toBe(title);
+    expect(src).toBe(url);
+  });
+
+  test('debe mostrar el titulo en el componente', () => { 
+    render(<GifItem title={title} url={url} />);
+    expect(screen.getByText(title)).toBeTruthy();// esperamos q el titulo exista
+   })
 });
+//screen es un objeto que nos permite buscar elementos en el arbol del componente
+//getByRole es una funcion que nos permite buscar elementos por su rol
+//container es el contenedor que contiene el componente renderizado
+//toMatchSnapshot es una funcion que toma una instantanea de la salida del componente
+//y la compara con la instantanea guardada
+//si las instantaneas no coinciden, la prueba falla
 
 /*
 Este código es una prueba unitaria para el componente `GifItem` usando Jest y React Testing Library. 
