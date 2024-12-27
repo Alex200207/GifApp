@@ -5,7 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { GrFavorite } from "react-icons/gr";
 import { MdFavorite } from "react-icons/md";
 
-export const GifItem = ({ title, url, onToggleFavorite, favorites }) => {
+export const GifItem = ({ title, url, id, onToggleFavorite, favorites }) => {
   const handleShare = () => {
     navigator.clipboard.writeText(url).then(() => {
       alert("URL copiada al portapapeles");
@@ -19,14 +19,15 @@ export const GifItem = ({ title, url, onToggleFavorite, favorites }) => {
       <p>{title}</p>
       <div className="btn-container">
         <button
-          onClick={() => onToggleFavorite({ title, url })}
+          onClick={() => onToggleFavorite({ title, url , id})}
           className={`btn-container__share `}
         >
           {
             favorites.some((fav) => fav.url === url) ? (
-              <GrFavorite className="btn-container__share_icon" />
-            ) : (
+              
               <MdFavorite  className="btn-container__share_active" />
+            ) : (
+              <GrFavorite className="btn-container__share_icon" />
             )
           }
         </button>

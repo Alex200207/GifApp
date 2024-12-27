@@ -16,6 +16,9 @@ const GitExpertApp = () => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
+  console.log(favorites);
+
+
   const toggleFavorite = (gif) => {
     if (favorites.some((fav) => fav.url === gif.url)) {
       setFavorites(favorites.filter((fav) => fav.url !== gif.url));

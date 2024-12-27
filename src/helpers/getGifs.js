@@ -14,7 +14,7 @@ import { API_KEY, API_URL } from "../constants/constantes";
                 url: img.images.downsized_medium.url
         } )
         );
-        console.log(gifs);//mostramos los gifs
+        // console.log(gifs);//mostramos los gifs
         return gifs;//retornarmos los gifs
     }
 
