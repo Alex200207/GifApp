@@ -35,7 +35,7 @@ export const GifItem = ({ title, url, id, onToggleFavorite, favorites }) => {
           <IoCopyOutline className="btn-container__share_icon" />
         </button>
         <a
-          href={`https://api.whatsapp.com/send?text=${url}`}
+          href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Mira este GIF: ${url}`)}`}
           className="btn_container__whatsapp"
         >
           <FaWhatsapp className="btn-container__whatssap_icon" />
