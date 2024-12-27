@@ -25,7 +25,8 @@ export const GifItem = ({ title, url }) => {
       />
       <p style={{ fontSize: "1.2em", fontWeight: "bold", margin: "12px 0" }}>
         {title}
-      </p>
+      </p>   
+      <div style={{ display: "flex" , justifyContent: "space-between" , gap: "10px"}}>
       <button
         onClick={handleShare}
         style={{
@@ -37,8 +38,24 @@ export const GifItem = ({ title, url }) => {
           cursor: "pointer",
         }}
       >
-        Compartir
+        Copiar URL
       </button>
+      <a
+        href={`https://api.whatsapp.com/send?text=${url}`}
+        style={{
+          padding: "8px 16px",
+          backgroundColor: "#25d366",
+          color: "#fff",
+          border: "none",
+          borderRadius: "4px",
+          
+          cursor: "pointer",
+          textDecoration: "none",
+        }}
+      >
+        Compartir por WhatsApp
+      </a>
+      </div>
     </div>
   );
 };

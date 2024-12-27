@@ -1,5 +1,7 @@
+import { API_KEY, API_URL } from "../constants/constantes";
+
     export const getGifs = async (category) => {
-        const url = `https://api.giphy.com/v1/gifs/search?api_key=01c3druSQnLj0n10cIRcIsxyhTGcNnPt&q=${category}&limit=10`;
+        const url = `${API_URL}api_key=${API_KEY}&q=${category}&limit=10`;
         const resp = await fetch(url);//hacemos la peticion a la api
         const {data} = await resp.json();//`data` es un arreglo de objetos que contiene la informacion de los gifs
 
