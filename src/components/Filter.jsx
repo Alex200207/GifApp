@@ -20,7 +20,6 @@ const Filter = ({ limit, onLimitChange }) => {
       {isOpen && (
         <select
           id="limit-select"
-          className="form-select"
           value={limit}
           onChange={handleChange}
           style={{

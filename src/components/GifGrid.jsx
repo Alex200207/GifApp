@@ -3,7 +3,13 @@ import { GifItem } from "./GifItem";
 import { useFetchGifs } from "../hooks/useFetchGifs";
 import { MdDelete } from "react-icons/md";
 
-export const GifGrid = ({ category, onDeleteCategory , limit}) => {
+export const GifGrid = ({
+  category,
+  onDeleteCategory,
+  limit,
+  onToggleFavorite,
+  favorites,
+}) => {
   const { images, isLoading } = useFetchGifs(category, limit);
   //crear un estado local
   // const [images, setImages] = useState([]);
@@ -27,7 +33,10 @@ export const GifGrid = ({ category, onDeleteCategory , limit}) => {
           alignItems: "center",
         }}
       >
-        <h3>{category}: {images.length}</h3>
+        
+        <h3>
+          {category}: {images.length}
+        </h3>
         <button onClick={() => onDeleteCategory(category)}>
           <MdDelete className="btn-delete" />
         </button>
@@ -39,7 +48,7 @@ export const GifGrid = ({ category, onDeleteCategory , limit}) => {
           (
             image //destructuramos el objeto
           ) => (
-            <GifItem key={image.id} {...image} /> //usamos el spread operator para pasar las propiedades del objeto como props
+            <GifItem key={image.id} {...image} onToggleFavorite={onToggleFavorite} favorites={favorites}/> //usamos el spread operator para pasar las propiedades del objeto como props
           )
         )}
       </div>

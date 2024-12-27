@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AddCategory, GifGrid } from "./components";
 
 import Filter from "./components/Filter";
 const GitExpertApp = () => {
   const [categories, setCategories] = useState(["anime"]); //estado inicial del componente
   const [limit, setLimit] = useState(5);
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(storedFavorites);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  const toggleFavorite = (gif) => {
+    if (favorites.some((fav) => fav.url === gif.url)) {
+      setFavorites(favorites.filter((fav) => fav.url !== gif.url));
+    } else {
+      setFavorites([...favorites, gif]);
+    }
+  };
 
   const onAddCategory = (newCategory) => {
     //validacion donde revisamos si el valor de input esta en en estado
@@ -27,17 +45,20 @@ const GitExpertApp = () => {
 
       <div className="search">
         <AddCategory onNewCategory={(event) => onAddCategory(event)} />
-        <Filter
-          limit={limit}
-          onLimitChange={setLimit}
-          
-        />
+        <Filter limit={limit} onLimitChange={setLimit} />
       </div>
 
       <hr />
 
       {categories.map((c) => (
-        <GifGrid key={c} category={c} onDeleteCategory={deleteCategory} limit={limit}/>
+        <GifGrid
+          key={c}
+          category={c}
+          onDeleteCategory={deleteCategory}
+          limit={limit}
+          onToggleFavorite={toggleFavorite}
+          favorites={favorites}
+        />
       ))}
 
       <hr />
