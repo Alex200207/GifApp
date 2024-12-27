@@ -13,6 +13,9 @@ input {
   padding: 10px 15px;
   width: fit-content;
 }
+h1{
+  text-align: center;
+}
 
 h2 {
   font-size: 1rem;
@@ -21,6 +24,7 @@ h2 {
 h3 {
   margin-left: 5px;
   font-size: 1.5rem;
+  text-transform: uppercase;
 }
 
 .card-grid {
@@ -35,7 +39,7 @@ button {
 .btn-delete {
   width: 30px;
   height: 30px;
-  color: rgb(157, 30, 30);
+  color: rgb(233, 36, 36);
 }
 
 .card {
@@ -62,6 +66,16 @@ button {
 .card img {
   width: 100%;
   border-radius: 5px;
+}
+
+.search{
+  display: flex;
+  margin: 20px 0;
+}
+.search__filter{
+  margin-left: 2px;
+  width: 2rem;
+  height: 2rem;
 }
 
 footer {

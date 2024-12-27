@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { AddCategory , GifGrid} from "./components";
+import { AddCategory, GifGrid } from "./components";
+
+import Filter from "./components/Filter";
 const GitExpertApp = () => {
-  const [categories, setCategories] = useState(['anime']); //estado inicial del componente
+  const [categories, setCategories] = useState(["anime"]); //estado inicial del componente
+  const [limit, setLimit] = useState(5);
 
   const onAddCategory = (newCategory) => {
     //validacion donde revisamos si el valor de input esta en en estado
@@ -18,19 +21,23 @@ const GitExpertApp = () => {
     setCategories(categories.filter((c) => c !== category));
   };
 
-
-
   return (
     <>
-      <h1>GifApp</h1>
+      <h1>Bienvenido a GifApp</h1>
 
-      <AddCategory
-        onNewCategory={(event) => onAddCategory(event)}
-      />
+      <div className="search">
+        <AddCategory onNewCategory={(event) => onAddCategory(event)} />
+        <Filter
+          limit={limit}
+          onLimitChange={setLimit}
+          
+        />
+      </div>
+
       <hr />
 
       {categories.map((c) => (
-        <GifGrid key={c} category={c} onDeleteCategory={deleteCategory} />
+        <GifGrid key={c} category={c} onDeleteCategory={deleteCategory} limit={limit}/>
       ))}
 
       <hr />

@@ -3,8 +3,8 @@ import { GifItem } from "./GifItem";
 import { useFetchGifs } from "../hooks/useFetchGifs";
 import { MdDelete } from "react-icons/md";
 
-export const GifGrid = ({ category, onDeleteCategory }) => {
-  const { images, isLoading } = useFetchGifs(category);
+export const GifGrid = ({ category, onDeleteCategory , limit}) => {
+  const { images, isLoading } = useFetchGifs(category, limit);
   //crear un estado local
   // const [images, setImages] = useState([]);
   // const getImage = async () => {
@@ -27,12 +27,12 @@ export const GifGrid = ({ category, onDeleteCategory }) => {
           alignItems: "center",
         }}
       >
-        <h3>{category}</h3>
+        <h3>{category}: {images.length}</h3>
         <button onClick={() => onDeleteCategory(category)}>
           <MdDelete className="btn-delete" />
         </button>
       </div>
-      {isLoading && <p>Cargando..</p> && <div>Sin resultados</div>}
+      {isLoading && <p>Cargando..</p>}
 
       <div className="card-grid">
         {images.map(
