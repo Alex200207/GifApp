@@ -98,7 +98,7 @@ footer {
   background-color: transparent;
 }
 
-.btn-container__share_active {
+.btn-container__share_active  {
   color: red;
   width: 32px;
   height: 32px;

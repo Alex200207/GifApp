@@ -23,7 +23,7 @@ export const GifItem = ({ title, url, id, onToggleFavorite, favorites }) => {
           className={`btn-container__share `}
         >
           {
-            favorites.some((fav) => fav.url === url) ? (
+            favorites.some((fav) => fav.id === id) ? (
               
               <MdFavorite  className="btn-container__share_active" />
             ) : (
