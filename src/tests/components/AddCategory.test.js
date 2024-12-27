@@ -23,10 +23,10 @@ describe('Pruebas en <AddCategory/>  ', () => {
      test('debe de llamar onNewCategory si el input tiene un valor ',  () => { 
 
         const inputValue = 'Saitama';//creamos una variable con el valor de Saitama
+        //un mock es una simulacion ded una funcion
+        const onNewCategory = jest.fn();//creamos una funcion mock
 
-        //TODO: 
-
-        render( <AddCategory onNewCategory={() => {}}/>)//objeto de prueba
+        render( <AddCategory onNewCategory={ onNewCategory}/>)//objeto de prueba
 
         const input = screen.getByRole('textbox')//creamos la referencia al input
 
@@ -39,5 +39,27 @@ describe('Pruebas en <AddCategory/>  ', () => {
         screen.debug()
 
         expect(input.value).toBe('')//esperamos que el valor del input sea vacio
+
+        expect( onNewCategory).toHaveBeenCalled();//esperamos que la funcion onNewCategory haya sido llamada
+        expect( onNewCategory).toHaveBeenCalledTimes(1);//esperamos que la funcion onNewCategory haya sido llamada una vez  
+        expect( onNewCategory).toHaveBeenCalledWith(inputValue);//esperamos que la funcion onNewCategory haya sido llamada con el valor de la variable inputValue
       })
+
+      test('no debe de llamar el onNewCategory si el input esta vacio ', () => { 
+
+        const onNewCategory = jest.fn();//creamos una funcion mock
+
+        render( <AddCategory onNewCategory={ onNewCategory}/>)//objeto de prueba
+
+        const form = screen.getByRole('form')//creamos la referencia al formulario
+
+        //disparar elementos
+
+        fireEvent.submit(form); //disparamos el evento submit
+        screen.debug()
+
+        expect( onNewCategory).not.toHaveBeenCalled();//esperamos que la funcion onNewCategory no haya sido llamada
+
+
+       })
  })
