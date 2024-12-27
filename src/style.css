@@ -19,6 +19,7 @@ h2 {
 }
 
 h3 {
+  margin-left: 5px;
   font-size: 1.5rem;
 }
 
@@ -38,22 +39,16 @@ button {
 }
 
 .card {
-  align-content: center;
-  align-items: center;
+  border:1px solid #ccc ;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  height: 0%;
-  justify-content: center;
   margin: 0 10px 10px 10px;
-  overflow: hidden;
-  padding: "16px";
-  text-align: "center",
+  border-radius:8px ;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
 
 .card p {
   background-color: white;
@@ -66,6 +61,7 @@ button {
 
 .card img {
   width: 100%;
+  border-radius: 5px;
 }
 
 footer {
@@ -73,3 +69,38 @@ footer {
   padding: 10px;
   text-align: center;
 }
+
+.btn-container{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+.btn-container__share{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+
+}
+.btn-container__share_icon{
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+
+.btn_container__whatsapp{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #02ad4f;
+  border-radius: 5px;
+}
+
+.btn-container__whatssap_icon{
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+
+
+
+

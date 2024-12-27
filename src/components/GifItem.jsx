@@ -1,4 +1,7 @@
 import PropTypes from "prop-types";
+import { IoCopyOutline } from "react-icons/io5";
+import { MdOutlineShare } from "react-icons/md";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const GifItem = ({ title, url }) => {
   const handleShare = () => {
@@ -8,53 +11,20 @@ export const GifItem = ({ title, url }) => {
   };
 
   return (
-    <div
-      className="card"
-      style={{
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        padding: "16px",
-        textAlign: "center",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <img
-        src={url}
-        alt={title}
-        style={{ maxWidth: "100%", borderRadius: "8px" }}
-      />
-      <p style={{ fontSize: "1.2em", fontWeight: "bold", margin: "12px 0" }}>
-        {title}
-      </p>   
-      <div style={{ display: "flex" , justifyContent: "space-between" , gap: "10px"}}>
-      <button
-        onClick={handleShare}
-        style={{
-          padding: "8px 16px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
-      >
-        Copiar URL
-      </button>
-      <a
-        href={`https://api.whatsapp.com/send?text=${url}`}
-        style={{
-          padding: "8px 16px",
-          backgroundColor: "#25d366",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          
-          cursor: "pointer",
-          textDecoration: "none",
-        }}
-      >
-        Compartir por WhatsApp
-      </a>
+    <div className="card">
+      <img src={url} alt={title} />
+      <p>{title}</p>
+      <div className="btn-container">
+        <button onClick={handleShare} className="btn-container__share">
+          <IoCopyOutline className="btn-container__share_icon" />
+        </button>
+        <a
+          href={`https://api.whatsapp.com/send?text=${url}`}
+          className="btn_container__whatsapp"
+        >
+          <FaWhatsapp className="btn-container__whatssap_icon" />
+          <MdOutlineShare className="btn-container__whatssap_icon" />
+        </a>
       </div>
     </div>
   );
