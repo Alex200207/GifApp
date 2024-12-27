@@ -12,24 +12,24 @@ export const GifItem = ({ title, url, id, onToggleFavorite, favorites }) => {
     });
   };
 
-  
+  const isFavorite = favorites.some((fav) => fav.id === id);
+
   return (
     <div className="card">
       <img src={url} alt={title} />
       <p>{title}</p>
       <div className="btn-container">
         <button
-          onClick={() => onToggleFavorite({ title, url , id})}
-          className={`btn-container__share `}
+          onClick={() => onToggleFavorite({ title, url, id })}
+          className={`btn-container__share ${
+            isFavorite ? "active" : ""
+          }`}
         >
-          {
-            favorites.some((fav) => fav.id === id) ? (
-              
-              <MdFavorite  className="btn-container__share_active" />
-            ) : (
-              <GrFavorite className="btn-container__share_icon" />
-            )
-          }
+          {isFavorite ? (
+            <MdFavorite className="btn-container__share_active" />
+          ) : (
+            <GrFavorite className="btn-container__share_icon" />
+          )}
         </button>
         <button onClick={handleShare} className="btn-container__share">
           <IoCopyOutline className="btn-container__share_icon" />
@@ -49,4 +49,7 @@ export const GifItem = ({ title, url, id, onToggleFavorite, favorites }) => {
 GifItem.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  onToggleFavorite: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired,
 };
