@@ -18,7 +18,7 @@ export const GifItem = ({ title, url, id, onToggleFavorite, favorites }) => {
   return (
     <div className="card">
       <img src={url} alt={title} />
-      <p>{title}</p>
+      <p className="card_p">{title}</p>
       <div className="btn-container">
         <button
           onClick={() => onToggleFavorite({ title, url, id })}

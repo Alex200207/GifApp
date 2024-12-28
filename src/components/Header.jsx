@@ -5,12 +5,44 @@ import { AddCategory } from "./AddCategory";
 import "../components/style/Header.css";
 import FavoriteGifs from "./FavoriteGifs";
 
-const Header = ({ onNewCategory, onLimitChange, limit ,favorites, onToggleFavorite}) => {
+const Header = ({ onNewCategory, onLimitChange, limit, favorites, onToggleFavorite }) => {
   const [isAsideOpen, setIsAsideOpen] = useState(false);
+  const [asideWidth, setAsideWidth] = useState(600); 
+  const [isResizing, setIsResizing] = useState(false);
 
   const toggleAside = () => {
     setIsAsideOpen(!isAsideOpen);
   };
+
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    setIsResizing(true);
+  };
+
+  const handleMouseMove = (e) => {
+    if (isResizing) {
+      const newWidth = window.innerWidth - e.clientX; // Calcula el nuevo ancho según la posición del mouse
+      setAsideWidth(Math.max(600, newWidth)); // Limita el ancho mínimo a 200px
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsResizing(false);
+  };
+
+  React.useEffect(() => {
+    if (isResizing) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+    } else {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    }
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isResizing]);
 
   return (
     <>
@@ -29,7 +61,10 @@ const Header = ({ onNewCategory, onLimitChange, limit ,favorites, onToggleFavori
         </div>
       </nav>
 
-      <aside className={`favorites-aside ${isAsideOpen ? 'open' : ''}`}>
+      <aside
+        className={`favorites-aside ${isAsideOpen ? "open" : ""}`}
+        style={{ width: `${asideWidth}px` }}
+      >
         <div className="aside-header">
           <h2>Mis Favoritos</h2>
           <button className="close-button" onClick={toggleAside}>
@@ -38,9 +73,9 @@ const Header = ({ onNewCategory, onLimitChange, limit ,favorites, onToggleFavori
         </div>
         <div className="aside-content">
           {favorites.length === 0 && <p className="aside-content__p">No tienes favoritos</p>}
-          <FavoriteGifs onToggleFavorite={onToggleFavorite} favorites={favorites}/>
-
+          <FavoriteGifs onToggleFavorite={onToggleFavorite} favorites={favorites} />
         </div>
+        <div className="resizer" onMouseDown={handleMouseDown}></div>
       </aside>
 
       {isAsideOpen && <div className="overlay" onClick={toggleAside}></div>}
@@ -50,10 +85,7 @@ const Header = ({ onNewCategory, onLimitChange, limit ,favorites, onToggleFavori
 
 const NavItem = ({ icon, label, active, onClick }) => {
   return (
-    <button 
-      className={`nav-item ${active ? "active" : ""}`}
-      onClick={onClick}
-    >
+    <button className={`nav-item ${active ? "active" : ""}`} onClick={onClick}>
       {icon}
       <span>{label}</span>
     </button>

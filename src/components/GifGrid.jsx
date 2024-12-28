@@ -33,7 +33,8 @@ export const GifGrid = ({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          margin: "5px"
+          margin: "5px",
+          marginBottom: "30px",
         }}
       >
         <h3>
