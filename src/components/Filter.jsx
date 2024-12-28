@@ -1,56 +1,45 @@
 import { useState } from "react";
-import { CiFilter } from "react-icons/ci";
+import { Filter as FilterIcon, ChevronDown } from "lucide-react";
 
-const Filter = ({ limit, onLimitChange }) => {
+
+ const Filter = ({ limit, onLimitChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleChange = (event) => {
-    onLimitChange(Number(event.target.value));
+  const handleOptionClick = (value) => {
+    onLimitChange(value);
     setIsOpen(false);
   };
 
   return (
-    <div className="filter-container" style={{ position: "relative" }}>
-      <CiFilter
-        className="search__filter"
-        style={{ cursor: "pointer", fontSize: "24px" }}
+    <div className="filter-container">
+      <button
+        className="filter-button"
         onClick={() => setIsOpen(!isOpen)}
-      />
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+      >
+        <FilterIcon className="filter-icon" />
+        <ChevronDown className={`chevron-icon ${isOpen ? 'rotate' : ''}`} />
+      </button>
 
       {isOpen && (
-        <select
-          id="limit-select"
-          value={limit}
-          onChange={handleChange}
-          style={{
-            position: "absolute",
-            top: "30px",
-            left: "0",
-            zIndex: 1000,
-            width: "100px",
-            backgroundColor: "white",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            padding: "5px",
-            boxShadow: "0 2px 5px rgba(0, 0, 0, 0.15)",
-          }}
-        >
-          <option value={5} style={{ padding: "5px" }}>
-            5
-          </option>
-          <option value={10} style={{ padding: "5px" }}>
-            10
-          </option>
-          <option value={15} style={{ padding: "5px" }}>
-            15
-          </option>
-          <option value={20} style={{ padding: "5px" }}>
-            20
-          </option>
-        </select>
+        <div className="dropdown" role="listbox">
+          <div className="dropdown-content">
+            {[100, 5, 10, 15, 20].map((value) => (
+              <button
+                key={value}
+                className={`dropdown-item ${limit === value ? 'selected' : ''}`}
+                onClick={() => handleOptionClick(value)}
+                role="option"
+                aria-selected={limit === value}
+              >
+                {value === 100 ? 'Mostrar todo' : value}
+              </button>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
-};
-
+}
 export default Filter;

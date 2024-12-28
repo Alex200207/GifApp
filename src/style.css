@@ -1,28 +1,67 @@
+/* Reset and base styles */
 * {
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: rgb(234, 234, 234);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.header_custom{
-  background-color: rgb(97, 32, 158);
-  color: white;
-  padding: 10px;
-  text-align: center;
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #eff0f1;
+  min-height: 100vh;
+}
+
+.navbar {
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4b5563;
+}
+
+.nav-item.active {
+  color: #2563eb;
+}
+
+.nav-item span {
+  font-size: 0.75rem;
+}
+
+.nav-item svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 input {
   background-color: white;
   border-radius: 5px;
-  border: 1px solid rgb(97, 32, 158);
+  border: 1px solid #ccc;
   color: black;
   font-size: 1.2rem;
   outline: none;
   padding: 10px 15px;
   width: fit-content;
 }
-h1{
+h1 {
   text-align: center;
-  
 }
 
 h2 {
@@ -31,8 +70,11 @@ h2 {
 
 h3 {
   margin-left: 5px;
-  font-size: 1.0rem;
+  font-size: 2rem;
   text-transform: uppercase;
+  font-weight: 500;
+  margin-left: 1.5rem;
+  margin-bottom: 10px 0 ;
 }
 
 .card-grid {
@@ -47,17 +89,16 @@ button {
 .btn-delete {
   width: 30px;
   height: 30px;
-  color: red;
+  color: rgb(218, 50, 50);
 }
 
 .card {
-  border:1px solid #ccc ;
+  border: 1px solid #ccc;
   background-color: white;
   display: flex;
   flex-direction: column;
   margin: 0 10px 10px 10px;
-  border-radius:8px ;
-  padding: 16px;
+  border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -73,21 +114,18 @@ button {
 
 .card img {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 10px 10px 0 0;
 }
 
-.search{
+.search {
   display: flex;
   margin: 20px 0;
 }
-.search__filter{
+.search__filter {
   margin-left: 2px;
   width: 2rem;
   height: 2rem;
 }
-
-
-
 
 footer {
   color: #000;
@@ -95,31 +133,33 @@ footer {
   text-align: center;
 }
 
-.btn-container{
+.btn-container {
   display: flex;
   justify-content: space-between;
   background-color: white;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
 }
-.btn-container__share{
+.btn-container__share {
   padding: 10px;
   border-radius: 5px;
   background-color: transparent;
 }
 
-.btn-container__share_active  {
+.btn-container__share_active {
   color: red;
   width: 32px;
   height: 32px;
   background-color: transparent;
 }
 
-.btn-container__share_icon{
+.btn-container__share_icon {
   width: 30px;
   height: 30px;
   background-color: transparent;
 }
 
-.btn_container__whatsapp{
+.btn_container__whatsapp {
   padding: 10px;
   border-radius: 5px;
   background-color: transparent;
@@ -127,23 +167,89 @@ footer {
   border-radius: 5px;
 }
 
-.btn-container__whatssap_icon{
+.btn-container__whatssap_icon {
   width: 30px;
   height: 30px;
   background-color: transparent;
 }
 
-.btn-download{
+.btn-download {
   padding: 10px;
   border-radius: 5px;
   background-color: transparent;
 }
-.btn-download__icon{
+.btn-download__icon {
   width: 30px;
   height: 30px;
   background-color: transparent;
 }
+.filter-container {
+  position: relative;
+}
 
+.filter-button {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
 
+.filter-button:hover {
+  color: #333;
+}
 
+.filter-icon {
+  width: 20px;
+  height: 20px;
+}
 
+.chevron-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.chevron-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 8px;
+  width: 200px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-content {
+  padding: 4px 0;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item.selected {
+  background-color: #f0f0f0;
+  color: #2563eb;
+}

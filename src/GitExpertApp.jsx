@@ -39,13 +39,8 @@ const GitExpertApp = () => {
 
   return (
     <>
-      <Header />
+      <Header limit={limit} onLimitChange={setLimit}  onNewCategory={(event) => onAddCategory(event)} />
 
-      <div className="search">
-        <AddCategory onNewCategory={(event) => onAddCategory(event)} />
-        <Filter limit={limit} onLimitChange={setLimit} />
-      </div>
-      <hr />
       {categories.map((c) => (
         <GifGrid
           key={c}
