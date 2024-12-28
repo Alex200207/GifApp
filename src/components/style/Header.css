@@ -44,6 +44,13 @@
     transition: right 0.3s ease;
     z-index: 1000;
   }
+  .aside-content__p {
+    flex: 1;
+    font-size: 1.5rem;
+    margin-top: 5px;
+    padding: 5px 20px 0px 20px;
+    text-align: center;
+  }
   
   .favorites-aside.open {
     right: 0;

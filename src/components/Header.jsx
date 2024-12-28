@@ -37,8 +37,9 @@ const Header = ({ onNewCategory, onLimitChange, limit ,favorites, onToggleFavori
           </button>
         </div>
         <div className="aside-content">
+          {favorites.length === 0 && <p className="aside-content__p">No tienes favoritos</p>}
           <FavoriteGifs onToggleFavorite={onToggleFavorite} favorites={favorites}/>
-          <p>No hay favoritos aún</p>
+
         </div>
       </aside>
 
