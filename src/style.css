@@ -74,7 +74,7 @@ h3 {
   text-transform: uppercase;
   font-weight: 500;
   margin-left: 1.5rem;
-  margin-bottom: 10px 0 ;
+  margin-bottom: 10px 0;
 }
 
 .card-grid {
@@ -89,6 +89,7 @@ button {
 .btn-delete {
   width: 30px;
   height: 30px;
+  margin-right: 10px;
   color: rgb(218, 50, 50);
 }
 
@@ -252,4 +253,10 @@ footer {
 .dropdown-item.selected {
   background-color: #f0f0f0;
   color: #2563eb;
+}
+
+@media screen and (max-width: 768px) {
+  h3 {
+    font-size: 1rem;
+  }
 }

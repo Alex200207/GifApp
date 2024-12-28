@@ -51,6 +51,7 @@
 
 .favorites-aside.open {
   right: 0;
+  padding: 0 0 20px;
 }
 
 .aside-header {
@@ -59,10 +60,12 @@
   align-items: center;
   padding: 1.5rem;
   border-bottom: 1px solid #eee;
-  background: #eee;
+  backdrop-filter: blur(10px);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
 }
 .aside-header h2 {
   margin: 0;
+  width: 100%;
   font-size: 1.25rem;
   font-weight: 500;
   color: #030303 !important;
@@ -147,6 +150,7 @@
   }
   .aside-header {
     margin-bottom: 10px;
+    
   }
 
   .dropdown {
