@@ -1,0 +1,130 @@
+
+  
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .nav-item:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 8px;
+  }
+  
+  .nav-item.active {
+    color: #ef4444;
+  }
+  
+
+  .favorites-aside {
+    position: fixed;
+    top: 0;
+    overflow: auto;
+    right: -100%;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background: rgba(255, 254, 254, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .favorites-aside.open {
+    right: 0;
+  }
+  
+  .aside-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    background: #eee;
+  }
+  .aside-header h2  {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #030303 !important;
+  }
+  
+  .aside-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .close-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  .card {
+    border: 1px solid #ccc;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px 10px 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card p {
+    background-color: white;
+    flex: 1;
+    font-size: 1.5rem;
+    margin-top: 5px;
+    padding: 5px 20px 0px 20px;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .favorites-aside {
+      max-width: 100%;
+    }
+    
+    .navbar-container {
+      padding: 0.75rem;
+    }
+    
+    .nav-item span {
+      display: none;
+    }
+  }

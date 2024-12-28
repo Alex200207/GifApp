@@ -39,7 +39,7 @@ const GitExpertApp = () => {
 
   return (
     <>
-      <Header limit={limit} onLimitChange={setLimit}  onNewCategory={(event) => onAddCategory(event)} />
+      <Header onToggleFavorite={toggleFavorite} favorites={favorites} limit={limit} onLimitChange={setLimit}  onNewCategory={(event) => onAddCategory(event)} />
 
       {categories.map((c) => (
         <GifGrid
