@@ -3,6 +3,13 @@
   background-color: rgb(234, 234, 234);
 }
 
+.header_custom{
+  background-color: rgb(97, 32, 158);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
 input {
   background-color: white;
   border-radius: 5px;
@@ -23,7 +30,7 @@ h2 {
 
 h3 {
   margin-left: 5px;
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   text-transform: uppercase;
 }
 
@@ -120,6 +127,17 @@ footer {
 }
 
 .btn-container__whatssap_icon{
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+
+.btn-download{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+}
+.btn-download__icon{
   width: 30px;
   height: 30px;
   background-color: transparent;

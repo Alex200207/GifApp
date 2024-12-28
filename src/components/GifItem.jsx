@@ -4,6 +4,7 @@ import { MdOutlineShare } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 import { GrFavorite } from "react-icons/gr";
 import { MdFavorite } from "react-icons/md";
+import { DowloadGif } from "../utils/DowloadGif";
 
 export const GifItem = ({ title, url, id, onToggleFavorite, favorites }) => {
   const handleShare = () => {
@@ -40,7 +41,9 @@ export const GifItem = ({ title, url, id, onToggleFavorite, favorites }) => {
         >
           <FaWhatsapp className="btn-container__whatssap_icon" />
           <MdOutlineShare className="btn-container__whatssap_icon" />
+          
         </a>
+        <DowloadGif fileUrl={url} fileName={`${title}.gif`}/>
       </div>
     </div>
   );

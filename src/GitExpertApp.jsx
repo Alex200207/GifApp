@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { AddCategory, GifGrid } from "./components";
 import Filter from "./components/Filter";
+import Header from "./components/Header";
 
 const GitExpertApp = () => {
   const [categories, setCategories] = useState(["anime"]);
@@ -38,7 +39,8 @@ const GitExpertApp = () => {
 
   return (
     <>
-      <h1>Bienvenido a GifApp</h1>
+      <Header />
+
       <div className="search">
         <AddCategory onNewCategory={(event) => onAddCategory(event)} />
         <Filter limit={limit} onLimitChange={setLimit} />
