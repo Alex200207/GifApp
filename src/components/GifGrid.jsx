@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { GifItem } from "./GifItem";
 import { useFetchGifs } from "../hooks/useFetchGifs";
-import { MdDelete } from "react-icons/md";
+import { MdDeleteOutline } from "react-icons/md";
 
 
 export const GifGrid = ({
@@ -39,7 +39,7 @@ export const GifGrid = ({
           {category}: {images.length} concidencias
         </h3>
         <button onClick={() => onDeleteCategory(category)}>
-          <MdDelete className="btn-delete" />
+          <MdDeleteOutline className="btn-delete" />
         </button>
       </div>
       {isLoading && <p>Cargando..</p>}
