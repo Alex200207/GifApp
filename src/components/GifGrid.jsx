@@ -3,7 +3,6 @@ import { GifItem } from "./GifItem";
 import { useFetchGifs } from "../hooks/useFetchGifs";
 import { MdDeleteOutline } from "react-icons/md";
 
-
 export const GifGrid = ({
   category,
   onDeleteCategory,
@@ -27,7 +26,6 @@ export const GifGrid = ({
 
   return (
     <>
-
       <div
         style={{
           display: "flex",
@@ -36,29 +34,32 @@ export const GifGrid = ({
           margin: "5px",
           marginBottom: "30px",
         }}
-      >
-        <h3>
-          {category}: {images.length} concidencias
-        </h3>
-        <button onClick={() => onDeleteCategory(category)}>
-          <MdDeleteOutline className="btn-delete" />
-        </button>
-      </div>
-      {isLoading && <p>Cargando..</p>}
+      ></div>
+      <div className="container">
+        <div className="container-title">
+          <h3>
+            {category}: {images.length} concidencias
+          </h3>
+          <button onClick={() => onDeleteCategory(category)}>
+            <MdDeleteOutline className="btn-delete" />
+          </button>
+        </div>
+        {isLoading && <p>Cargando..</p>}
 
-      <div className="card-grid">
-        {images.map(
-          (
-            image //destructuramos el objeto
-          ) => (
-            <GifItem
-              key={image.id}
-              {...image}
-              onToggleFavorite={onToggleFavorite}
-              favorites={favorites}
-            /> //usamos el spread operator para pasar las propiedades del objeto como props
-          )
-        )}
+        <div className="card-grid">
+          {images.map(
+            (
+              image //destructuramos el objeto
+            ) => (
+              <GifItem
+                key={image.id}
+                {...image}
+                onToggleFavorite={onToggleFavorite}
+                favorites={favorites}
+              /> //usamos el spread operator para pasar las propiedades del objeto como props
+            )
+          )}
+        </div>
       </div>
     </>
   );
