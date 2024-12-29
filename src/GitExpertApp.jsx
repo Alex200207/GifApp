@@ -39,18 +39,22 @@ const GitExpertApp = () => {
 
   return (
     <>
-      <Header onToggleFavorite={toggleFavorite} favorites={favorites} limit={limit} onLimitChange={setLimit}  onNewCategory={(event) => onAddCategory(event)} />
+      <Header onToggleFavorite={toggleFavorite} favorites={favorites} limit={limit} onLimitChange={setLimit} onNewCategory={(event) => onAddCategory(event)} />
 
-      {categories.map((c) => (
-        <GifGrid
-          key={c}
-          category={c}
-          onDeleteCategory={deleteCategory}
-          limit={limit}
-          onToggleFavorite={toggleFavorite}
-          favorites={favorites}
-        />
-      ))}
+      {categories.length === 0 ? (
+        <p className="aviso">No hay categorías disponibles. Añade una nueva categoría.</p>
+      ) : (
+        categories.map((c) => (
+          <GifGrid
+            key={c}
+            category={c}
+            onDeleteCategory={deleteCategory}
+            limit={limit}
+            onToggleFavorite={toggleFavorite}
+            favorites={favorites}
+          />
+        ))
+      )}
       <hr />
       <footer>
         <p>© 2023 GifApp. All rights reserved.</p>
