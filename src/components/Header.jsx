@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Heart, X } from "lucide-react";
 import Filter from "../components/Filter";
 import { AddCategory } from "./AddCategory";
 import "../components/style/Header.css";
 import FavoriteGifs from "./FavoriteGifs";
 
-const Header = ({ onNewCategory, onLimitChange, limit, favorites, onToggleFavorite }) => {
+const Header = ({
+  onNewCategory,
+  onLimitChange,
+  limit,
+  favorites,
+  onToggleFavorite,
+}) => {
   const [isAsideOpen, setIsAsideOpen] = useState(false);
-  const [asideWidth, setAsideWidth] = useState(600); 
+  const [asideWidth, setAsideWidth] = useState(600);
   const [isResizing, setIsResizing] = useState(false);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
 
   const toggleAside = () => {
     setIsAsideOpen(!isAsideOpen);
@@ -21,8 +29,8 @@ const Header = ({ onNewCategory, onLimitChange, limit, favorites, onToggleFavori
 
   const handleMouseMove = (e) => {
     if (isResizing) {
-      const newWidth = window.innerWidth - e.clientX; // Calcula el nuevo ancho según la posición del mouse
-      setAsideWidth(Math.max(600, newWidth)); // Limita el ancho mínimo a 200px
+      const newWidth = window.innerWidth - e.clientX;
+      setAsideWidth(Math.max(600, newWidth));
     }
   };
 
@@ -30,7 +38,7 @@ const Header = ({ onNewCategory, onLimitChange, limit, favorites, onToggleFavori
     setIsResizing(false);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isResizing) {
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
@@ -44,21 +52,39 @@ const Header = ({ onNewCategory, onLimitChange, limit, favorites, onToggleFavori
     };
   }, [isResizing]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll =
+        window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        setIsNavbarVisible(false); // Ocultar navbar
+      } else {
+        setIsNavbarVisible(true); // Mostrar navbar
+      }
+      setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollTop]);
+
   return (
     <>
-      <nav className="navbar">
-        <div className="navbar-container">
-          <AddCategory onNewCategory={onNewCategory} />
-          <div className="search">
-            <Filter onLimitChange={onLimitChange} limit={limit} />
-          </div>
-          <NavItem
-            icon={<Heart color="#ef4444" fill="#ef4444" />}
-            label="Favoritos"
-            active={true}
-            onClick={toggleAside}
-          />
+      <nav
+        className={`navbar-container ${isNavbarVisible ? "visible" : "hidden"}`}
+      >
+        <AddCategory onNewCategory={onNewCategory} />
+        <div className="search">
+          <Filter onLimitChange={onLimitChange} limit={limit} />
         </div>
+        <NavItem
+          icon={<Heart color="#ef4444" fill="#ef4444" />}
+          label="Favoritos"
+          active={true}
+          onClick={toggleAside}
+        />
       </nav>
 
       <aside
@@ -72,8 +98,13 @@ const Header = ({ onNewCategory, onLimitChange, limit, favorites, onToggleFavori
           </button>
         </div>
         <div className="aside-content">
-          {favorites.length === 0 && <p className="aside-content__p">No tienes favoritos</p>}
-          <FavoriteGifs onToggleFavorite={onToggleFavorite} favorites={favorites} />
+          {favorites.length === 0 && (
+            <p className="aside-content__p">No tienes favoritos</p>
+          )}
+          <FavoriteGifs
+            onToggleFavorite={onToggleFavorite}
+            favorites={favorites}
+          />
         </div>
         <div className="resizer" onMouseDown={handleMouseDown}></div>
       </aside>

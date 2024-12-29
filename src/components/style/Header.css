@@ -18,6 +18,7 @@
   color: #ef4444;
 }
 
+
 .favorites-aside {
   position: fixed;
   top: 0;
@@ -31,6 +32,8 @@
   z-index: 1000;
   resize: none; /* Desactiva el resize nativo del navegador */
 }
+
+
 
 .favorites-aside.open {
   right: 0;
