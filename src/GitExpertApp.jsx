@@ -1,6 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
-import { AddCategory, GifGrid } from "./components";
-import Filter from "./components/Filter";
+import { useState, useEffect } from "react";
+import {  GifGrid } from "./components";
 import Header from "./components/Header";
 
 const GitExpertApp = () => {
