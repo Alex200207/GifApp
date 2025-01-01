@@ -56,7 +56,7 @@ const GitExpertApp = () => {
       )}
       <hr />
       <footer>
-        <p>© 2023 GifApp. All rights reserved.</p>
+        <p>© 2024 GifApp. All rights reserved.</p>
         <p>Developed by Eddy T.</p>
       </footer>
     </>

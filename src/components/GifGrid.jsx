@@ -26,15 +26,6 @@ export const GifGrid = ({
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          margin: "5px",
-          marginBottom: "30px",
-        }}
-      ></div>
       <div className="container">
         <div className="container-title">
           <h3>
