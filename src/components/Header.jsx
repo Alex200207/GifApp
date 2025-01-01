@@ -84,6 +84,7 @@ const Header = ({
           label="Favoritos"
           active={true}
           onClick={toggleAside}
+          count={favorites.length}
         />
       </nav>
 
@@ -114,13 +115,17 @@ const Header = ({
   );
 };
 
-const NavItem = ({ icon, label, active, onClick }) => {
+const NavItem = ({ icon, label, active, onClick, count }) => {
   return (
     <button className={`nav-item ${active ? "active" : ""}`} onClick={onClick}>
-      {icon}
+      <div className="icon-container">
+        {icon}
+        {count > 0 && <span className="badge">{count}</span>}
+      </div>
       <span>{label}</span>
     </button>
   );
 };
+
 
 export default Header;
