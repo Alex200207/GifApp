@@ -55,7 +55,7 @@ const Header = ({
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll =
-        window.pageYOffset || document.documentElement.scrollTop;
+         document.documentElement.scrollTop;
       if (currentScroll > lastScrollTop) {
         setIsNavbarVisible(false); // Ocultar navbar
       } else {
