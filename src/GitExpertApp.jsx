@@ -38,6 +38,7 @@ const GitExpertApp = () => {
 
   return (
     <>
+    
       <Header onToggleFavorite={toggleFavorite} favorites={favorites} limit={limit} onLimitChange={setLimit} onNewCategory={(event) => onAddCategory(event)} />
 
       {categories.length === 0 ? (

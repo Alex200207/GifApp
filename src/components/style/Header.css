@@ -18,6 +18,14 @@
   color: #ef4444;
 }
 
+.main-title {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 10px rgba(255, 3, 3, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
 
 .favorites-aside {
   position: fixed;
@@ -32,8 +40,6 @@
   z-index: 1000;
   resize: none; /* Desactiva el resize nativo del navegador */
 }
-
-
 
 .favorites-aside.open {
   right: 0;
@@ -150,6 +156,9 @@
 }
 
 @media (max-width: 768px) {
+  .main-title {
+    display: none;
+  }
   .favorites-aside {
     width: 100%;
     max-width: 400px;

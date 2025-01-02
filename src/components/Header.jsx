@@ -54,8 +54,7 @@ const Header = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScroll =
-         document.documentElement.scrollTop;
+      const currentScroll = document.documentElement.scrollTop;
       if (currentScroll > lastScrollTop) {
         setIsNavbarVisible(false); // Ocultar navbar
       } else {
@@ -75,6 +74,10 @@ const Header = ({
       <nav
         className={`navbar-container ${isNavbarVisible ? "visible" : "hidden"}`}
       >
+        <div className="container_main-title">
+          <h1 className="main-title">GIFapp</h1>
+        </div>
+
         <AddCategory onNewCategory={onNewCategory} />
         <div className="search">
           <Filter onLimitChange={onLimitChange} limit={limit} />
@@ -126,6 +129,5 @@ const NavItem = ({ icon, label, active, onClick, count }) => {
     </button>
   );
 };
-
 
 export default Header;
