@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import {  GifGrid } from "./components";
+import { GifGrid } from "./components";
 import Header from "./components/Header";
+import { FaRegFaceSadCry } from "react-icons/fa6";
 
 const GitExpertApp = () => {
   const [categories, setCategories] = useState(["anime"]);
@@ -38,11 +39,20 @@ const GitExpertApp = () => {
 
   return (
     <>
-    
-      <Header onToggleFavorite={toggleFavorite} favorites={favorites} limit={limit} onLimitChange={setLimit} onNewCategory={(event) => onAddCategory(event)} />
+      <Header
+        onToggleFavorite={toggleFavorite}
+        favorites={favorites}
+        limit={limit}
+        onLimitChange={setLimit}
+        onNewCategory={(event) => onAddCategory(event)}
+      />
 
       {categories.length === 0 ? (
-        <p className="aviso">No hay categorías disponibles. Añade una nueva categoría.</p>
+        <p className="aviso">
+          {" "}
+          <FaRegFaceSadCry className="aviso_icon" />
+          No hay nada para mostrar. Añade una nueva categoría.
+        </p>
       ) : (
         categories.map((c) => (
           <GifGrid

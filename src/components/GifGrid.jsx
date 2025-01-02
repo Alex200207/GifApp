@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { GifItem } from "./GifItem";
 import { useFetchGifs } from "../hooks/useFetchGifs";
 import { AiOutlineDelete } from "react-icons/ai";
+import {motion} from 'framer-motion'
 
 export const GifGrid = ({
   category,
@@ -28,9 +29,13 @@ export const GifGrid = ({
     <>
       <div className="container">
         <div className="container-title">
-          <h3>
-            {category}: {images.length} concidencias
-          </h3>
+          <motion.h3
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            {category}: {images.length} resultados
+          </motion.h3>
           <button onClick={() => onDeleteCategory(category)}>
             <AiOutlineDelete className="btn-delete" />
           </button>
