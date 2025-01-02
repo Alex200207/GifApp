@@ -84,7 +84,7 @@ const Header = ({
         </div>
         <NavItem
           icon={<Heart color="#ef4444" fill="#ef4444" />}
-          label="Favoritos"
+          label={<span className="nav-label">Favoritos</span>}
           active={true}
           onClick={toggleAside}
           count={favorites.length}

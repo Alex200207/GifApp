@@ -53,13 +53,16 @@ body {
   color: #4b5563;
 }
 
-.nav-item.active {
-  color: #2563eb;
+.nav-label{
+  color: #000000;
 }
 
 .nav-item span {
   font-size: 0.75rem;
-  color: rgb(14, 14, 14);
+
+}
+.nav-item label{
+  color: #000000;
 }
 
 .nav-item svg {

@@ -4,7 +4,7 @@ import Header from "./components/Header";
 
 const GitExpertApp = () => {
   const [categories, setCategories] = useState(["anime"]);
-  const [limit, setLimit] = useState(20);
+  const [limit, setLimit] = useState(100);
   const [favorites, setFavorites] = useState([]);
 
   // Sincronizar favoritos con localStorage
