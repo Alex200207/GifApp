@@ -34,6 +34,18 @@ body {
   z-index: 1000;
 }
 
+.nav-label-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
 .navbar-container.hidden {
   transform: translateY(-100%);
 }
@@ -159,6 +171,11 @@ footer {
   margin-top: 6rem;
 }
 
+.dark-mode-button {
+  width: 30px;
+  height: 30px;
+}
+
 .container-title {
   display: flex;
   justify-content: space-between;
@@ -183,11 +200,11 @@ footer {
   margin: 16rem 0 9rem;
 }
 
-.aviso_icon{
+.aviso_icon {
   width: 60px;
   align-self: center;
   height: 60px;
-  background-color: transparent;  
+  background-color: transparent;
 }
 .btn-container__share {
   padding: 10px;
@@ -339,11 +356,18 @@ footer {
     justify-content: center;
   }
   .navbar-container {
+    flex-direction: column;
     justify-content: space-around;
     width: 100%;
     gap: 0;
     padding: 5px;
   }
+
+  .nav-label-container {
+    display: flex;
+    gap: 1rem;
+  }
+
   .container {
     margin-top: 8rem;
   }

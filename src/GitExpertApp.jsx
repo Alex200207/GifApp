@@ -68,7 +68,7 @@ const GitExpertApp = () => {
       <hr />
       <footer>
         <p>© 2024 GifApp. All rights reserved.</p>
-        <p>Developed by Eddy T.</p>
+        <p>Developed by Eddy Talavera.</p>
       </footer>
     </>
   );

@@ -4,6 +4,8 @@ import Filter from "../components/Filter";
 import { AddCategory } from "./AddCategory";
 import "../components/style/Header.css";
 import FavoriteGifs from "./FavoriteGifs";
+import { CiLight } from "react-icons/ci";
+import { MdDarkMode } from "react-icons/md";
 
 const Header = ({
   onNewCategory,
@@ -17,6 +19,7 @@ const Header = ({
   const [isResizing, setIsResizing] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleAside = () => {
     setIsAsideOpen(!isAsideOpen);
@@ -25,6 +28,10 @@ const Header = ({
   const handleMouseDown = (e) => {
     e.preventDefault();
     setIsResizing(true);
+  };
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   const handleMouseMove = (e) => {
@@ -78,17 +85,30 @@ const Header = ({
           <h1 className="main-title">GIFapp</h1>
         </div>
 
-        <AddCategory onNewCategory={onNewCategory} />
-        <div className="search">
-          <Filter onLimitChange={onLimitChange} limit={limit} />
+        <div className="search-container">
+          <AddCategory onNewCategory={onNewCategory} />
+          <div className="search">
+            <Filter onLimitChange={onLimitChange} limit={limit} />
+          </div>
         </div>
-        <NavItem
-          icon={<Heart color="#ef4444" fill="#ef4444" />}
-          label={<span className="nav-label">Favoritos</span>}
-          active={true}
-          onClick={toggleAside}
-          count={favorites.length}
-        />
+
+        <div className="nav-label-container">
+          <NavItem
+            icon={<Heart color="#ef4444" fill="#ef4444" />}
+            label={<span className="nav-label">Favoritos</span>}
+            active={true}
+            onClick={toggleAside}
+            count={favorites.length}
+          />
+
+          <button onClick={toggleDarkMode}>
+            {isDarkMode ? (
+              <CiLight className="dark-mode-button" />
+            ) : (
+              <MdDarkMode className="dark-mode-button" />
+            )}
+          </button>
+        </div>
       </nav>
 
       <aside
