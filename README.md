@@ -1,8 +1,25 @@
-# React + Vite
+# Buscador de GIFs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para buscar y mostrar GIFs utilizando la API de **Giphy**, desarrollada con **React**, **TypeScript**, **Vite**, y **CSS puro**. Esta aplicación permite a los usuarios buscar GIFs en tiempo real, visualizando los resultados en una interfaz interactiva y simple.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Búsqueda de GIFs en tiempo real usando la API de **Giphy**.
+- Visualización de resultados en una galería de GIFs.
+- Interfaz sencilla y moderna, diseñada con **CSS puro**.
+- Rendimiento optimizado gracias a **Vite**.
+- Desarrollado con **React** y **TypeScript** para un código más organizado y robusto.
+
+## Instalación
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+2. instalacion
+ ```bash
+   npm i
+   npm run dev
+
+
+   
